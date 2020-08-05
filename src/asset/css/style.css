@@ -10,8 +10,54 @@ html, body, #root{
   background-size: contain;
 }
 
-.card-login{
+.title-auth{
+color:#1F618D ;
+}
+
+/* .card-login{
   position: relative;
   border-radius: 20px;
   border-color: red;
+  height: 350px;
+  width:250px;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px    rgba(255,255,255, 0.5);
+} */
+
+.btn-auth{
+  background-color: #1F618D;
+  border-radius: 70px;
+  width: 90px;
+  text-align: center;
+ 
+}
+
+.btn-auth:hover{
+  border: 1px solid #34325E;
+}
+
+.nav{
+  background-color: #5499C7;
+}
+
+.card-profile{
+  position: relative;
+  height: 660px;
+  width:100%;
+  /* border-radius: 10px; */
+  background-color:  #5499C7;
+  /* margin-top: 20px; */
+  /* margin-left: 15px;  */
+  /* box-sizing: border-box; */
+ border: 2px solid #A9CCE3
+ 
+}
+
+.avatar-img{
+  width: 150px;
+  height: 150px;
+  margin-top: 30px;
+  border-radius: 80px;
+  background-image: url('../img/avatar3.jpg');
+ 
+
 }

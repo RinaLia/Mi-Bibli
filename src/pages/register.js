@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-class login extends Component {
+class register extends Component {
   render() {
     return (
       <>
@@ -24,12 +24,13 @@ class login extends Component {
           <Col xs={6} md={6} lg={6}>
             <div className="d-flex flex-column w-100 h-100">
               <div className=" text-center mt-3">
-                <h1 className="title-auth">Login</h1>
+                <h1 className="title-auth">Register</h1>
               </div>
               <div className="greeting text-center mt-4 ">
-                <h4>Welcome Back!</h4>
+                <h4>Hello, friend!</h4>
                 <p>
-                  To keep connected with us please login with your personal info
+                  Enter your personal details and start your reading journey
+                  with us!
                 </p>
               </div>
               <div className=" h-80 d-flex mt-2 justify-content-center align-items-center">
@@ -46,7 +47,9 @@ class login extends Component {
                     <Button className="btn-auth" type="submit">
                       Submit
                     </Button>
-                    <p className="mt-3">Don't have account? Please register</p>
+                    <p className="mt-3">
+                      Already have an account? Please login
+                    </p>
                   </Form>
                 </div>
               </div>
@@ -58,4 +61,4 @@ class login extends Component {
   }
 }
 
-export default login;
+export default register;
