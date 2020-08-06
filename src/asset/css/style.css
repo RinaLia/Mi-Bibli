@@ -24,11 +24,12 @@ color:#1F618D ;
 } */
 
 .btn-auth{
-  background-color: #1F618D;
+  
   border-radius: 70px;
   width: 90px;
   text-align: center;
- 
+  background-color:  #5499C7;
+
 }
 
 .btn-auth:hover{
@@ -58,6 +59,66 @@ color:#1F618D ;
   margin-top: 30px;
   border-radius: 80px;
   background-image: url('../img/avatar3.jpg');
- 
+}
+
+/*detail*/
+.half-cover{
+  height: 330px;
+  background-color: #5499C7 ;
+}
+
+.back-btn{
+  align-self: center;
+  background-color:white;
+}
+
+.btn{
+  height: 40px;
+  
+  
+}
+.option-btn a{
+  font-size: 25px;
+}
+.full-cover img{
+  width: 200px;
+  height:280px;
+  margin-top:-200px;
+  background-color: white;
+  border-radius: 15px;
+  padding:20px 
+}
+
+.book-details{
+  margin-top: -40px;
+}
+
+.badge-detail{
+  background-color: #5499C7 
+}
+
+.brw{
+  background-color:#F39C12;
+  border: 1px solid white
+}
+
+.brw:hover{
+  background-color: #A04000;
+}
+
+
+
+/*home*/
+.bg-home{
+  background-image: url('../img/home.jpg');
+  height:300px
+}
+.card-book{
+  position: relative;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 2px solid  #5499C7;
+  padding:10px;
 
 }
+ 
