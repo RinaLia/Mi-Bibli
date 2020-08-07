@@ -38,18 +38,29 @@ class register extends Component {
                   <Form className="card-login">
                     <FormGroup controlId="formBasicEmail">
                       <FormLabel>Email address</FormLabel>
-                      <FormControl type="email" placeholder="Enter email" />
+                      <FormControl
+                        className="email"
+                        type="email"
+                        placeholder="Enter email"
+                      />
                     </FormGroup>
                     <Form.Group controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>
-                      <Form.Control type="password" placeholder="Password" />
+                      <Form.Control
+                        className="password"
+                        type="password"
+                        placeholder="Password"
+                      />
                     </Form.Group>
                     <Button className="btn-auth" type="submit">
                       Submit
                     </Button>
-                    <p className="mt-3">
-                      Already have an account? Please login
-                    </p>
+                    <div className="footer mt-1">
+                      <span>Already have account? Please</span>
+                      <Link to="/login">
+                        <span> login</span>
+                      </Link>
+                    </div>
                   </Form>
                 </div>
               </div>

@@ -37,16 +37,29 @@ class login extends Component {
                   <Form className="card-login">
                     <FormGroup controlId="formBasicEmail">
                       <FormLabel>Email address</FormLabel>
-                      <FormControl type="email" placeholder="Enter email" />
+                      <FormControl
+                        className="email"
+                        type="email"
+                        placeholder="Enter email"
+                      />
                     </FormGroup>
                     <Form.Group controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>
-                      <Form.Control type="password" placeholder="Password" />
+                      <Form.Control
+                        className="password"
+                        type="password"
+                        placeholder="Password"
+                      />
                     </Form.Group>
                     <Button className="btn-auth" type="submit">
                       Submit
                     </Button>
-                    <p className="mt-3">Don't have account? Please register</p>
+                    <div className="footer mt-1">
+                      <span>Don't have account?</span>
+                      <Link to="/register">
+                        <span> Click here</span>
+                      </Link>
+                    </div>
                   </Form>
                 </div>
               </div>
