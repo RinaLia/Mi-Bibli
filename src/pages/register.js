@@ -12,6 +12,19 @@ import {
 import { Link } from "react-router-dom";
 
 class register extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "email",
+      password: "password",
+    };
+  }
+  register = (e) => {
+    e.preventDefault();
+    console.log(this.state.email);
+    console.log(this.state.password);
+  };
+
   render() {
     return (
       <>
@@ -35,10 +48,13 @@ class register extends Component {
               </div>
               <div className=" h-80 d-flex mt-2 justify-content-center align-items-center">
                 <div className=" d-flex justify-content-center mt-2 ml-2">
-                  <Form className="card-login">
+                  <Form onSubmit={this.register}>
                     <FormGroup controlId="formBasicEmail">
                       <FormLabel>Email address</FormLabel>
                       <FormControl
+                        onChange={(e) =>
+                          this.setState({ email: e.target.value })
+                        }
                         className="email"
                         type="email"
                         placeholder="Enter email"
@@ -52,7 +68,11 @@ class register extends Component {
                         placeholder="Password"
                       />
                     </Form.Group>
-                    <Button className="btn-auth" type="submit">
+                    <Button
+                      onSubmit={this.register}
+                      className="btn-auth"
+                      type="submit"
+                    >
                       Submit
                     </Button>
                     <div className="footer mt-1">
