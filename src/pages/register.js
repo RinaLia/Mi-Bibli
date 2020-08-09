@@ -15,8 +15,8 @@ class register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "email",
-      password: "password",
+      email: "",
+      password: "",
     };
   }
   register = (e) => {
@@ -63,13 +63,16 @@ class register extends Component {
                     <Form.Group controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>
                       <Form.Control
+                        onChange={(e) =>
+                          this.setState({ password: e.target.value })
+                        }
                         className="password"
                         type="password"
                         placeholder="Password"
                       />
                     </Form.Group>
                     <Button
-                      onSubmit={this.register}
+                      onChange={this.register}
                       className="btn-auth"
                       type="submit"
                     >

@@ -12,6 +12,19 @@ import {
 import { Link } from "react-router-dom";
 
 class login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
+  login = (e) => {
+    e.preventDefault();
+    console.log(this.state.email);
+
+    console.log(this.state.password);
+  };
   render() {
     return (
       <>
@@ -34,10 +47,13 @@ class login extends Component {
               </div>
               <div className=" h-80 d-flex mt-2 justify-content-center align-items-center">
                 <div className=" d-flex justify-content-center mt-2 ml-2">
-                  <Form className="card-login">
+                  <Form onSubmit={this.login}>
                     <FormGroup controlId="formBasicEmail">
                       <FormLabel>Email address</FormLabel>
                       <FormControl
+                        onChange={(e) =>
+                          this.setState({ email: e.target.value })
+                        }
                         className="email"
                         type="email"
                         placeholder="Enter email"
@@ -46,12 +62,19 @@ class login extends Component {
                     <Form.Group controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>
                       <Form.Control
+                        onChange={(e) =>
+                          this.setState({ password: e.target.value })
+                        }
                         className="password"
                         type="password"
                         placeholder="Password"
                       />
                     </Form.Group>
-                    <Button className="btn-auth" type="submit">
+                    <Button
+                      onChange={this.login}
+                      className="btn-auth"
+                      type="submit"
+                    >
                       Submit
                     </Button>
                     <div className="footer mt-1">
