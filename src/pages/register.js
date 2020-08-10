@@ -7,11 +7,12 @@ import {
   FormGroup,
   FormLabel,
   FormControl,
-  Card,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { register } from "../redux/actions/auth";
 
-class register extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,10 +20,12 @@ class register extends Component {
       password: "",
     };
   }
-  register = (e) => {
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  register = async (e) => {
     e.preventDefault();
-    console.log(this.state.email);
-    console.log(this.state.password);
+    const { email, password } = this.state;
   };
 
   render() {
@@ -72,7 +75,7 @@ class register extends Component {
                       />
                     </Form.Group>
                     <Button
-                      onChange={this.register}
+                      onChange={this.registerUser}
                       className="btn-auth"
                       type="submit"
                     >
@@ -95,4 +98,4 @@ class register extends Component {
   }
 }
 
-export default register;
+export default Register;
