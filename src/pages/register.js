@@ -11,6 +11,16 @@ import {
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { register } from "../redux/actions/auth";
+import { validateFields } from "../helpers/Validation";
+import Swal from "sweetalert2";
+
+// function MessageEmail(validateFields) {
+//   if (!validateFields) {
+//     return <div className="error-msg text-danger">{validateFields.email}</div>;
+//   } else {
+//     return <div className="error-msg text-succes">Haha!</div>;
+//   }
+// }
 
 class Register extends Component {
   constructor(props) {
@@ -18,17 +28,63 @@ class Register extends Component {
     this.state = {
       email: "",
       password: "",
+      password2: "",
     };
   }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
   register = async (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { email, password, password2 } = this.state;
+
+    console.log(email);
+    console.log(password);
+    console.log(password2);
+
+    const _validateEmail = validateFields.validateEmail(email);
+    console.log("_validateEmail", _validateEmail);
+
+    const _validatePassword = validateFields.validatePassword(password);
+
+    if (_validateEmail.isError) {
+      return Swal.fire({
+        icon: "error",
+        title: "Check again!",
+        text: _validateEmail.msg,
+      });
+    }
+
+    if (_validatePassword.isError) {
+      return Swal.fire({
+        icon: "error",
+        title: "Check again!",
+        text: _validatePassword.msg,
+      });
+    }
+    if (password !== password2) {
+      return Swal.fire({
+        icon: "error",
+        title: "Check again!",
+        text: "Password not match",
+      });
+    }
+
+    await this.props.register(email, password);
+    console.log("props.register", this.props.register(email, password));
+
+    this.props.history.push("/login");
+    Swal.fire({
+      icon: "success",
+      title: "Yeay!!!",
+      text: "Registration success",
+    });
   };
 
   render() {
+    // const { email, password } = this.state;
     return (
       <>
         <Row className="h-100 no-gutters">
@@ -55,27 +111,37 @@ class Register extends Component {
                     <FormGroup controlId="formBasicEmail">
                       <FormLabel>Email address</FormLabel>
                       <FormControl
-                        onChange={(e) =>
-                          this.setState({ email: e.target.value })
-                        }
+                        name="email"
+                        onChange={this.handleChange}
                         className="email"
                         type="email"
                         placeholder="Enter email"
                       />
+                      {/* <MessageEmail messages={this.msg} /> */}
                     </FormGroup>
                     <Form.Group controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>
                       <Form.Control
-                        onChange={(e) =>
-                          this.setState({ password: e.target.value })
-                        }
+                        name="password"
+                        onChange={this.handleChange}
                         className="password"
                         type="password"
                         placeholder="Password"
                       />
                     </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                      <Form.Label>Retype Password</Form.Label>
+                      <Form.Control
+                        name="password2"
+                        onChange={this.handleChange}
+                        className="password"
+                        type="password"
+                        placeholder="Password"
+                      />
+                    </Form.Group>
+
                     <Button
-                      onChange={this.registerUser}
+                      onChange={this.register}
                       className="btn-auth"
                       type="submit"
                     >
@@ -98,4 +164,5 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapDispatchToProps = { register };
+export default connect(null, mapDispatchToProps)(Register);

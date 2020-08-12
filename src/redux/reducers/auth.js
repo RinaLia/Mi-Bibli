@@ -2,6 +2,7 @@ const initialState = {
   isLoading: false,
   successMsg: "",
   isError: false,
+
   errorMsg: "",
   token: null,
 };
