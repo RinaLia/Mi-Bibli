@@ -42,12 +42,3 @@ export default (state = initialState, action) => {
       return state;
   }
 };
-
-// export default (state = initialState, action) => {
-//   switch (action.type) {
-// case POST_LOGIN_SUCCESSFUL:
-//   return { ...state, isError: false, token: action.payload.data };
-// case POST_REGISTER_FAILED:
-//   return { ...state, isError: true, token: [] };
-//   }
-// };
