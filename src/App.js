@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { store, persistor } from "./redux/store";
+// import { store, persistor } from "./redux/store";
+import configureStore from "./store";
 import login from "./pages/login";
 import register from "./pages/register";
 import topnav from "./pages/topNav";
@@ -15,13 +16,15 @@ import profile from "./pages/profile";
 import detail from "./pages/detail";
 import home from "./pages/home";
 
+const { persistor, store } = configureStore();
+
 class App extends Component {
   render() {
     return (
       <>
         <Provider store={store}>
           <BrowserRouter>
-            <PersistGate persistor={persistor}>
+            <PersistGate loading={null} persistor={persistor}>
               <Switch>
                 <Route path="/" exact component={home} />
                 <Route path="/login" exact component={login} />

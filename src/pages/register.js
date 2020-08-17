@@ -10,8 +10,9 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { register } from "../redux/actions/auth";
-import { validateFields } from "../helpers/Validation";
+// import { register } from "../redux/actions/auth";
+import { postRegister } from "../store/actions/auth";
+import { validateFields } from "../helpers/validationAuth";
 import Swal from "sweetalert2";
 
 // function MessageEmail(validateFields) {
@@ -72,18 +73,21 @@ class Register extends Component {
       });
     }
 
-    await this.props.register(email, password);
-    console.log("props.register", this.props.register(email, password));
-
-    this.props.history.push("/login");
-    Swal.fire({
-      icon: "success",
-      title: "Yeay!!!",
-      text: "Registration success",
-    });
+    // await this.props.register(email, password);
+    await this.props.postRegister(email, password);
+    // console.log("props.register", this.props.register(email, password));
   };
 
   render() {
+    if (!this.props.auth.isRegisterError) {
+      this.props.history.push("/login");
+      Swal.fire({
+        icon: "success",
+        title: "Yeay!!!",
+        text: "Registration success",
+      });
+    }
+
     // const { email, password } = this.state;
     return (
       <>
@@ -164,5 +168,11 @@ class Register extends Component {
   }
 }
 
-const mapDispatchToProps = { register };
-export default connect(null, mapDispatchToProps)(Register);
+// const mapDispatchToProps = { postRegister };
+// export default connect(null, mapDispatchToProps)(Register);
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+const mapDispatchToProps = { postRegister };
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
