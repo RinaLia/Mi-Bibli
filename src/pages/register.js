@@ -15,14 +15,6 @@ import { postRegister } from "../store/actions/auth";
 import { validateFields } from "../helpers/validationAuth";
 import Swal from "sweetalert2";
 
-// function MessageEmail(validateFields) {
-//   if (!validateFields) {
-//     return <div className="error-msg text-danger">{validateFields.email}</div>;
-//   } else {
-//     return <div className="error-msg text-succes">Haha!</div>;
-//   }
-// }
-
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -76,6 +68,15 @@ class Register extends Component {
     // await this.props.register(email, password);
     await this.props.postRegister(email, password);
     // console.log("props.register", this.props.register(email, password));
+    // if (!this.props.auth.isRegisterError) {
+    //   this.props.history.push("/login");
+    //   Swal.fire({
+    //     icon: "success",
+    //     title: "Yeay!!!",
+    //     text: "Registration success",
+    //   });
+    // }
+    // await this.props.postRegister(email, password);
   };
 
   render() {
@@ -86,6 +87,7 @@ class Register extends Component {
         title: "Yeay!!!",
         text: "Registration success",
       });
+      // this.props.history.push("/login");
     }
 
     // const { email, password } = this.state;

@@ -31,7 +31,7 @@ class Login extends Component {
   };
 
   onLogin = async () => {
-    const { email, password, status } = this.state;
+    const { email, password } = this.state;
 
     await this.props.postLogin(email, password);
     // console.log("auth reducer", this.props.auth);
@@ -112,8 +112,16 @@ class Login extends Component {
     this.props.postRegisterReset();
   }
 
-  componentDidUpdate(prevState) {
-    console.log(prevState);
+  componentDidUpdate(prevState, _prevProps) {
+    console.log("prevState", prevState);
+    console.log("prevState.auth", prevState.auth.errMsg);
+    console.log("this.props.auth.isLoginError", this.props.auth.isLoginError);
+
+    // console.log("auth", prevProps);
+
+    // console.log("prevProps", prevProps);
+
+    // console.log("nextState", nextState);
 
     if (prevState.auth.errMsg !== this.props.auth.errMsg) {
       if (this.props.auth.isLoginError) {
@@ -121,8 +129,40 @@ class Login extends Component {
           icon: "error",
           title: this.props.auth.errMsg,
         });
+      } else {
+        this.props.history.push("/");
       }
+      //else {
+      //   !this.props.auth.isLoginError;
+      //   Swal.fire({
+      //     icon: "success",
+      //   });
+      // }
     }
+
+    // if (prevState.auth.isRegisterError !== this.props.auth.isRegisterError) {
+    //   Swal.fire({
+    //     icon: "success",
+    //   });
+    // }
+    // else {
+    //   this.props.auth.isLoginError === false;
+    //   // Swal.fire("haloo");
+    // }
+    //else {
+    //   prevState.auth.errMsg === this.props.auth.errMsg; // this.props.history.push("/");
+    //   Swal.fire({
+    //     icon: "success",
+    //   });
+    // }
+    // if (prevState.auth.errMsg === this.props.auth.errMsg) {
+    //   if (this.props.auth.isLoginError) {
+    //     this.props.history.push("/");
+    //     Swal.fire({
+    //       icon: "success",
+    //     });
+    //   }
+    // }
   }
 
   render() {

@@ -4,3 +4,6 @@ export const POST_REGISTER_RESET = "POST_REGISTER_RESET";
 
 export const POST_LOGIN_SUCCESSFUL = "POST_LOGIN_SUCCESSFUL";
 export const POST_LOGIN_FAILED = "POST_LOGIN_FAILED";
+export const LOGOUT = "LOGOUT";
+
+export const GET_BOOK = "GET_BOOK";

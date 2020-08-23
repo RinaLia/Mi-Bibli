@@ -4,6 +4,7 @@ import {
   POST_REGISTER_RESET,
   POST_LOGIN_SUCCESSFUL,
   POST_LOGIN_FAILED,
+  LOGOUT,
 } from "../type";
 
 const initialState = {
@@ -37,6 +38,14 @@ export default (state = initialState, action) => {
         isLoginError: true,
         token: [],
         errMsg: action.payload.message,
+      };
+    case LOGOUT:
+      return {
+        isRegisterError: true,
+        isLoginError: null,
+        errMsg: null,
+        status: null,
+        token: null,
       };
     default:
       return state;

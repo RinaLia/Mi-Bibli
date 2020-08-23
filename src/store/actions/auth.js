@@ -4,6 +4,7 @@ import {
   POST_REGISTER_RESET,
   POST_LOGIN_SUCCESSFUL,
   POST_LOGIN_FAILED,
+  LOGOUT,
 } from "../type";
 import { Request, url } from "../../helpers/request";
 
@@ -36,3 +37,6 @@ export const postLogin = (email, password) => (dispatch) => {
     }
   );
 };
+
+export const logout = () => (dispatch) =>
+  dispatch({ type: LOGOUT, payload: [] });
