@@ -27,12 +27,7 @@ class topNav extends Component {
       showLogoutModal: !this.state.showLogoutModal,
     });
   }
-  logoutAuth = () => {
-    this.props.logout();
-    console.log(this.props);
 
-    // this.props.history.push("/login");
-  };
   render() {
     return (
       <>
@@ -78,7 +73,7 @@ class topNav extends Component {
             </Form>
           </Navbar.Collapse>
         </Navbar>
-        {console.log("modal =>", this.state.showLogoutModal)}
+        {/* {console.log("modal =>", this.state.showLogoutModal)} */}
         {/* <ModalDialog isOpen={this.state.toggleLogoutModal}>
           <Modal.Header closeButton>
             <Modal.Title>Modal title</Modal.Title>

@@ -131,6 +131,11 @@ class Login extends Component {
         });
       } else {
         this.props.history.push("/");
+        Swal.fire({
+          icon: "success",
+          title: "Login Success",
+          timer: 3000,
+        });
       }
       //else {
       //   !this.props.auth.isLoginError;

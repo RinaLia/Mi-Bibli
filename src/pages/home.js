@@ -10,8 +10,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      book_title: "",
-      book_genre: "",
+      dataBook: [],
     };
   }
 
@@ -19,6 +18,20 @@ class Home extends Component {
     this.props.logout();
     this.props.history.push("/login");
   };
+
+  fetchBook = async () => {
+    await this.props.getBook();
+    const { dataBook } = this.props.book;
+    // await getBook();
+    console.log("dataBook", dataBook);
+    // console.log("this.props.book", this.props.book);
+
+    // this.setState({ dataBook });
+  };
+
+  componentDidMount() {
+    this.fetchBook();
+  }
 
   render() {
     return (
@@ -30,16 +43,18 @@ class Home extends Component {
           </div>
         </div>
         <Row className="w-100 d-flex justify-content-center">
-          <div className="card-book">
-            <img
-              style={{ width: 130, height: 180 }}
-              src={book}
-              alt="card-book"
-            />
-            <div className="title mt-2 text-center font-weight-bold">
-              <p>Map of Salt </p>
+          {this.state.dataBook.map((lis_book) => (
+            <div className="card-book">
+              <img
+                style={{ width: 130, height: 180 }}
+                src={lis_book.image}
+                alt="card-book"
+              />
+              <div className="title mt-2 text-center font-weight-bold">
+                <p>{lis_book.book_title} </p>
+              </div>
             </div>
-          </div>
+          ))}
         </Row>
       </>
     );
