@@ -21,7 +21,7 @@
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.3.0",
     "sweetalert2": "^9.17.1",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
